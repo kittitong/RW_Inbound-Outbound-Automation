@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "TAS_ETLProcess", "TAS_ETLProcess\TAS_ETLProcess.dtproj", "{DF887A1B-F25C-4246-8B54-8DD2DF4A6590}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF887A1B-F25C-4246-8B54-8DD2DF4A6590}.Development|Default.ActiveCfg = Development
+		{DF887A1B-F25C-4246-8B54-8DD2DF4A6590}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
