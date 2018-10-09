@@ -5,21 +5,21 @@
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="MNB580267L"
   DTS:CreatorName="MINORGROUP\Kitti_to"
-  DTS:DTSID="{3997C86F-D295-4E44-AB83-57D163458BEC}"
+  DTS:DTSID="{5607393B-8743-4509-9421-D825D60769BB}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.7001.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="ReimbursementAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{A0F0D1AD-3B6C-490D-AAB5-2CF6009BD931}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{0138AFD7-8C02-4621-B614-76218AEFF94C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DatabaseLog_DB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{516749CF-20DE-4E4A-A476-770624C95A8B}"
+      DTS:DTSID="{09F98E77-B86B-458C-A0A6-C8DA986C643D}"
       DTS:ObjectName="DatabaseLog_DB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -27,14 +27,14 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABdTdqEhaIx0qf+Rf/Z13GpAAAAAASAAACgAAAAEAAAAG0j6ruc6YXvc8a+Hi/M+8UYAAAA+6QEdW2Ejvlh+1qkBm//hEKzUd0RuavZFAAAAGGsVFdSrsPuCkfsCF4sFtsLqCQK</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABjYhCs7AM6o4WS47mxCeQSAAAAAASAAACgAAAAEAAAAGq4B5ZTFrwbh4/twmQ3cxMYAAAA7aN4zXklRrfQYH4evUEkSFLD3NOx2Py+FAAAABIHGLjSN5AU4pc4uTxXdVZzt3kL</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Inbound Archive File Connection]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{4B9B89DE-C011-4FB9-ACAA-114BE132A490}"
+      DTS:DTSID="{6098C2B9-F13B-40C8-9B30-E5C1D69E6CB4}"
       DTS:ObjectName="Inbound Archive File Connection">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::InboundArchiveFile]</DTS:PropertyExpression>
@@ -46,7 +46,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="874"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-06-S2200006913.txt">
+          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-09-S2200006913.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +55,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Value"
-              DTS:DTSID="{F4025CF7-F728-4EC7-ACBA-28E20366EB8B}"
+              DTS:DTSID="{157B3F28-F7A4-47D3-A6B1-0FFE02E17589}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -66,7 +66,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{66149949-5B4D-45E9-82DB-5F79CC8407D3}"
+      DTS:DTSID="{F86B3DE8-4508-4044-8947-DF844DC29C5E}"
       DTS:ObjectName="ShipmentNumber"
       DTS:Required="True">
       <DTS:Property
@@ -77,25 +77,25 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B0CBC241-9190-48ED-ACA4-D97256FE6FFE}"
+      DTS:DTSID="{41AD0F9A-DF74-42E1-B74E-93816AFEA73F}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;C:\\TMS\\WebService\\FTP\\Inbound_Archive\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot;+ @[$Package::ShipmentNumber] +&quot;.txt&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="InboundArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-06-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-09-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4EE8745D-2DE8-4EBF-8EF5-015DCC690A3F}"
+      DTS:DTSID="{AA49FB67-B3F6-4C41-9AF5-2A48491B2F63}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;C:\\TMS\\WebService\\FTP\\Inbound\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot; + @[$Package::ShipmentNumber] +&quot;.txt&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="InboundFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-06-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-09-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -103,7 +103,7 @@
       DTS:refId="Package\Copy inbound file from archive folder to inbound folder"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="File System Task"
-      DTS:DTSID="{ADC32740-7037-46AB-9EB8-D24A03109F5E}"
+      DTS:DTSID="{31E50863-5952-4FE0-945C-CA32C3376348}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="Copy inbound file from archive folder to inbound folder"
@@ -123,7 +123,7 @@
       DTS:refId="Package\dft Generate inbound file"
       DTS:CreationName="SSIS.Pipeline.3"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{B926A6D8-7271-4019-9F67-2CBAA32D8167}"
+      DTS:DTSID="{A3E0727C-149F-4ADC-9935-4D95D61FA31B}"
       DTS:ExecutableType="SSIS.Pipeline.3"
       DTS:LocaleID="-1"
       DTS:ObjectName="dft Generate inbound file"
@@ -179,7 +179,7 @@
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping">"@ShipmentNumber:Input",{66149949-A4B2-45E9-82DB-5F79CC8407D3};</property>
+                  name="ParameterMapping">"@ShipmentNumber:Input",{F86B3DE8-BAF7-4044-8947-DF844DC29C5E};</property>
               </properties>
               <connections>
                 <connection
@@ -316,7 +316,7 @@
       DTS:refId="Package\Set Shipment status to registration on IDOC"
       DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{4DD160C6-EC76-4126-A740-D3BA213323FF}"
+      DTS:DTSID="{B915D01E-779B-46AC-9CEB-1D88EEC43604}"
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set Shipment status to registration on IDOC"
@@ -325,7 +325,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{516749CF-20DE-4E4A-A476-770624C95A8B}"
+          SQLTask:Connection="{09F98E77-B86B-458C-A0A6-C8DA986C643D}"
           SQLTask:SqlStatementSource="update raTMS_LogTruckShipmentSAP&#xA;set RegistrationDate=GETDATE(),&#xA;      IDocStatus='Created'&#xA;where ShipmentNumber=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -341,7 +341,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{09FA376A-A307-4CDC-861B-7F846C893F68}"
+      DTS:DTSID="{66D820BF-A0BA-48BA-9014-17123DA0E10C}"
       DTS:From="Package\dft Generate inbound file"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -349,7 +349,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{FB8B7461-FDBA-40E9-9E30-10AFD68443C1}"
+      DTS:DTSID="{F25F7CAD-00D6-4610-99FC-A5376522B90E}"
       DTS:From="Package\Copy inbound file from archive folder to inbound folder"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -375,6 +375,10 @@
           Size="199,42"
           Id="Package\dft Generate inbound file"
           TopLeft="206,49" />
+        <NodeLayout
+          Size="288,42"
+          Id="Package\Set Shipment status to registration on IDOC"
+          TopLeft="158,227" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="304.75,91">
@@ -397,10 +401,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="288,42"
-          Id="Package\Set Shipment status to registration on IDOC"
-          TopLeft="158,227" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="303,170">

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{2C7B8E0C-6405-4AB2-AB81-9B418593D104}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C9E2A39F-1130-4A57-8C4C-F5526636A999}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -65,7 +65,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABr1dS+VZgs9jW9ylMQ/NflAAAAAASAAACgAAAAEAAAAKMLGyUaiQRaJZBAwHjAmnYYAAAA2x+5nINFq0TOGaTE8wA5gVoeghBm+URhFAAAAKSo2MdZj+kbI+dme+QlatHHMsvI</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC9gpXsFLBXE8pwRAm2OWvmAAAAAASAAACgAAAAEAAAAG8247dpw4y/Zcpt/bif+nUYAAAAPZF6tu1jJ0i7dzoMRKd/oPhLiNyhllqsFAAAAGZjNDyvUgoyVEsyjzfgJjh0stCM</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -316,7 +316,7 @@ from [raTMS_LogInboundSAP]</property>
         <NodeLayout
           Size="153,42"
           Id="Package\Data Flow Task"
-          TopLeft="5.5,5.5" />
+          TopLeft="200.5,120.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
