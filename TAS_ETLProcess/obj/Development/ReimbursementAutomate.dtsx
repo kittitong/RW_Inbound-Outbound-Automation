@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ReimbursementAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{0138AFD7-8C02-4621-B614-76218AEFF94C}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{CCE01C4C-36E8-40D7-A758-B0821818095A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACnxfe2y84APJiK8+bjHGXjAAAAAASAAACgAAAAEAAAALHG7QsxPRxfMtRdczqZ0FYYAAAALXwjFe0C50Nja3PkbffIbMrjZRPd8lWCFAAAAIbRFGUXPkTDdKv6YupZjahohRq7</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD9x/p0lgXfaN7YrJAw2paCAAAAAASAAACgAAAAEAAAANZiQVPXW0ol0Ii7vfgCjgEYAAAAyR7FUlTwf7CrzXIlLioPPPmk3x/hYH2jFAAAAOvNmMZRS/PcLpaF7z8C1XwBzDN2</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="874"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-10-S2200006913.txt">
+          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-14-S2200006913.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,7 +84,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-10-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-14-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -95,7 +95,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-10-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-14-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -326,7 +326,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{09F98E77-B86B-458C-A0A6-C8DA986C643D}"
-          SQLTask:SqlStatementSource="update raTMS_LogTruckShipmentSAP&#xA;set RegistrationDate=GETDATE(),&#xA;      IDocStatus='Created'&#xA;where ShipmentNumber=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="update raTMS_LogTruckShipmentSAP&#xA;set IDocRegistrationDate=GETDATE(),&#xA;      IDocStatus='Created'&#xA;where ShipmentNumber=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="$Package::ShipmentNumber"

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RegistrationAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{5CFD2410-7FA0-4FE5-B732-34A86496FFD3}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{33C1705F-69F1-4FD4-8F88-274DDEF50556}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -79,7 +79,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB1eVc8EU1PpjNwTx8/zfTHAAAAAASAAACgAAAAEAAAAAgNhA5dclz6M3btY9jop+AYAAAAcMDc4Iw3HslFcyLrHxci6N0XsUJMAfsqFAAAABpbor6ZUQN08/z5qV+/ndZoVmOV</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACZDp1IpzvzGTaPGNsz2QBaAAAAAASAAACgAAAAEAAAAKiqigPl82QmNtWas6K9QDkYAAAAJo3KoNPCIT0wRKy/w6rpCk7gW59bkzQ3FAAAAP+uwhvA6Yl4P3uvQ3Uv0U9qt72V</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -169,6 +169,7 @@
               <DTS:ObjectData>
                 <FileSystemData
                   TaskOperationType="MoveFile"
+                  TaskOverwriteDestFile="True"
                   TaskSourcePath="User::OutboundFileName"
                   TaskIsSourceVariable="True"
                   TaskDestinationPath="Processing folder" />
@@ -932,7 +933,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
-                  SQLTask:SqlStatementSource="DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAP]&#xA;WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2])&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND not exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime] WHERE ShipmentNumber= ShipmentNumber)&#xA;&#x9;&#xA;DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAPDriver]&#xA;WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2])&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND not exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime] WHERE ShipmentNumber= ShipmentNumber)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAP] &#xA;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND (ShipmentNumber not in (SELECT ShipmentNumber FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime]))&#xA;&#x9;&#xA;DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAPDriver]  &#xA;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND (ShipmentNumber not in (SELECT ShipmentNumber FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime]))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
