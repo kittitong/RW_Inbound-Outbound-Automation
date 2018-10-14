@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB6HmrABJfINDdpg5TDDhZqAAAAAASAAACgAAAAEAAAAHfUIw5QixuCyWc4AoR7dz4YAAAA52hL4a5RgBkuJSMndi8l8IjMhElzTTnHFAAAAFYHtulX0jeBxcq+ElD5ERJUdnHY</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACnxfe2y84APJiK8+bjHGXjAAAAAASAAACgAAAAEAAAALHG7QsxPRxfMtRdczqZ0FYYAAAALXwjFe0C50Nja3PkbffIbMrjZRPd8lWCFAAAAIbRFGUXPkTDdKv6YupZjahohRq7</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="874"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-09-S2200006913.txt">
+          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-10-S2200006913.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,7 +84,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-09-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-10-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -95,7 +95,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-09-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-10-S2200006913.txt</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

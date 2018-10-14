@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RegistrationAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{55A53599-E1E0-46C7-8C9C-B3120D7E2FB6}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{B29B074E-048A-4567-A6C7-371A9017FE36}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -79,7 +79,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPObiE1dQFE6AABFYRctgnAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADOlUhkhXerJ3OUPuCofUmiAAAAAASAAACgAAAAEAAAAHnxJ2dwwxsP5LOZ9m+Ho2kYAAAAznDbL7Mj5kEQsDqs67lWuqavs8PJbZy1FAAAACCBClQDJHHxL8wXVwi2ApXxExhO</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAu9g1aXGeeinWxWffRqS2OAAAAAASAAACgAAAAEAAAAP2NguSauprP/Dtm/KZIWnAYAAAAzRallDh7yzUf7RXZWTXe4UGTy71E6SElFAAAAOPXZKHdOIEyTP4X03Mnc7M2bm7O</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -160,6 +160,7 @@
               DTS:Description="File System Task"
               DTS:DTSID="{F7EC5CDF-01F1-4895-B174-379A8C396F1B}"
               DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:ForceExecutionResult="0"
               DTS:LocaleID="-1"
               DTS:ObjectName="fst Move file to Temp Folder"
               DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
@@ -224,7 +225,7 @@
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
-                  SQLTask:SqlStatementSource="UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 1] = SUBSTRING ([Column 0], 1, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 2] = SUBSTRING ([Column 0], 34, 16) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 3] = SUBSTRING ([Column 0], 67, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 4] = SUBSTRING ([Column 0], 82, 16) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 5] = SUBSTRING ([Column 0], 88, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 6] = SUBSTRING ([Column 0], 70, 5) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 7] = SUBSTRING ([Column 0], 69, 11) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 8] = SUBSTRING ([Column 0], 80, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 9] = SUBSTRING ([Column 0], 102, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 10] = SUBSTRING ([Column 0], 112, 6) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 11] = SUBSTRING ([Column 0], 140, 6) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 12] = SUBSTRING ([Column 0], 379, 14) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 13] = SUBSTRING ([Column 0], 240, 6) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 14] = SUBSTRING ([Column 0], 118, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 15] = SUBSTRING ([Column 0], 64, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 16] = SUBSTRING ([Column 0], 66, 1) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 17] = SUBSTRING ([Column 0], 696, 30) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 18] = SUBSTRING ([Column 0], 87, 40) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 19] = SUBSTRING ([Column 0], 66, 10) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 1]  = LTRIM(RTRIM(SUBSTRING([Column 0], 1, 10)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 2]  = LTRIM(RTRIM(SUBSTRING([Column 0], 34, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 3]  = LTRIM(RTRIM(SUBSTRING([Column 0], 67, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 4]  = LTRIM(RTRIM(SUBSTRING([Column 0], 82, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 5]  = LTRIM(RTRIM(SUBSTRING([Column 0], 88, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 6]  = LTRIM(RTRIM(SUBSTRING([Column 0], 70, 5)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 7]  = LTRIM(RTRIM(SUBSTRING([Column 0], 69, 11)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 8]  = LTRIM(RTRIM(SUBSTRING([Column 0], 80, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 9]  = LTRIM(RTRIM(SUBSTRING([Column 0], 102, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 10] = LTRIM(RTRIM(SUBSTRING([Column 0], 112, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 11] = LTRIM(RTRIM(SUBSTRING([Column 0], 140, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 12] = LTRIM(RTRIM(SUBSTRING([Column 0], 379, 14))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 13] = LTRIM(RTRIM(SUBSTRING([Column 0], 240, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 14] = LTRIM(RTRIM(SUBSTRING([Column 0], 118, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 15] = LTRIM(RTRIM(SUBSTRING([Column 0], 64, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 16] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 1)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 17] = LTRIM(RTRIM(SUBSTRING([Column 0], 696, 30))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 18] = LTRIM(RTRIM(SUBSTRING([Column 0], 87, 40)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 19] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 20] = LTRIM(RTRIM(SUBSTRING([Column 0], 71, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -297,35 +298,14 @@
                   VSTAMinorVersion="0"
                   Language="CSharp">
                   <ProjectItem
-                    Name="Properties\AssemblyInfo.cs"
-                    Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_104061de0df3455ca6120ecf2a2290a3")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_104061de0df3455ca6120ecf2a2290a3")]
-[assembly: AssemblyCopyright("Copyright @  2018")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                    Name="Properties\Settings.settings"
+                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
                   <ProjectItem
                     Name="Properties\Resources.resx"
                     Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -694,14 +674,35 @@ namespace ST_104061de0df3455ca6120ecf2a2290a3.Properties {
     }
 }]]></ProjectItem>
                   <ProjectItem
-                    Name="Properties\Settings.settings"
-                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                    Name="Properties\AssemblyInfo.cs"
+                    Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_104061de0df3455ca6120ecf2a2290a3")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_104061de0df3455ca6120ecf2a2290a3")]
+[assembly: AssemblyCopyright("Copyright @  2018")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
                   <ProjectItem
                     Name="Properties\Resources.Designer.cs"
                     Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -896,7 +897,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
-                  SQLTask:SqlStatementSource="INSERT INTO [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 (SAPOutboundNumber, FrontPlate, BackPlate, VBELN, MATNR, POSNR, Quantity, CompartmentNumber)&#xA;&#xA;SELECT&#xA;&#x9;[Column 2]&#xA;&#x9;,[Column 7]&#xA;&#x9;,[Column 8]&#xA;&#x9;,[Column 9]&#xA;&#x9;,[Column 10]&#xA;&#x9;,[Column 11]&#xA;&#x9;,[Column 13]&#xA;&#x9;,[Column 16]&#xA;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk] where [Column 1] like 'E2OILSQ001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [TerminalCode] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 6] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [ShipmentNumber] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [Carrier] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 5] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSA'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [SealNumber] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DateTime] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 12] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'EDI_DC40'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [CustomerID] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 14] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSI'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DriverID] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 15] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSF'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDNO] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 19] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDADDON]= [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.EXTDELNR]= [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="INSERT INTO [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 (SAPOutboundNumber, FrontPlate, BackPlate, VBELN, MATNR, POSNR, Quantity, CompartmentNumber)&#xA;&#xA;SELECT&#xA;&#x9;[Column 2]&#xA;&#x9;,[Column 8]&#xA;&#x9;,[Column 7]&#xA;&#x9;,[Column 9]&#xA;&#x9;,[Column 10]&#xA;&#x9;,[Column 11]&#xA;&#x9;,[Column 13]&#xA;&#x9;,[Column 16]&#xA;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk] where [Column 1] like 'E2OILSQ001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [TerminalCode] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 6] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [ShipmentNumber] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [Carrier] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 5] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSA'&#xA;&#xA; UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [SealNumber] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DateTime] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 12] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'EDI_DC40'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [CustomerID] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 14] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSI'&#xA;   AND [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 20] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2.VBELN&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DriverID] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 15] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSF'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDNO] = [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 19] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDADDON]= [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.EXTDELNR]= [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [DatabaseLog].[dbo].raTMS_LogShipment_Bulk_Stage_2 SET [TransactionType]= [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 16] FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -913,7 +914,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
-                  SQLTask:SqlStatementSource="INSERT INTO [DatabaseLog].[dbo].raTMS_LogTruckShipmentSAP (SAPOutboundNumber, TerminalCode, ShipmentNumber, SealNumber, DriverID, Carrier, FrontPlate, BackPlate, CompartmentNumber, Quantity, VBELN, MATNR, POSNR, DateTime, CustomerID, RegistrationDate)&#xA;&#xA;SELECT&#xA;&#xA;&#x9;[SAPOutboundNumber]&#xA;&#x9;,LTRIM(RTRIM([AddFld.LIDNO]))&#xA;&#x9;,[ShipmentNumber]&#xA;&#x9;,[SealNumber]&#xA;&#x9;,[DriverID]&#xA;&#x9;,[Carrier]&#xA;&#x9;,[FrontPlate]&#xA;&#x9;,[BackPlate]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[Quantity]&#xA;&#x9;,[VBELN]&#xA;&#x9;,[MATNR]&#xA;&#x9;,[POSNR]&#xA;&#x9;,[DateTime]&#xA;&#x9;,[CustomerID]&#xA;                ,GETDATE()&#xA;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="INSERT INTO [DatabaseLog].[dbo].raTMS_LogTruckShipmentSAP (SAPOutboundNumber, TerminalCode, ShipmentNumber, SealNumber, DriverID, Carrier, FrontPlate, BackPlate, CompartmentNumber, Quantity, VBELN, MATNR, POSNR, DateTime, CustomerID, RegistrationDate, CompartmentNumber_relative)&#xA;SELECT&#xA;&#x9;[SAPOutboundNumber]&#xA;&#x9;,[AddFld.LIDNO]&#xA;&#x9;,[ShipmentNumber]&#xA;&#x9;,[SealNumber]&#xA;&#x9;,[DriverID]&#xA;&#x9;,[Carrier]&#xA;&#x9;,[FrontPlate]&#xA;&#x9;,[BackPlate]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[Quantity]&#xA;&#x9;,[VBELN]&#xA;&#x9;,[MATNR]&#xA;&#x9;,[POSNR]&#xA;&#x9;,[DateTime]&#xA;&#x9;,[CustomerID]&#xA;                ,GETDATE()&#xA;&#x9;,[CompartmentNumber]&#xA;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;WHERE TransactionType in ('H', 'V')&#xA;&#xA;&#xA;INSERT INTO [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAPDriver]([ShipmentNumber],[DriverID])&#xA;SELECT [ShipmentNumber],DriverID&#xA;FROM (&#xA;&#x9;SELECT TOP 1 [ShipmentNumber] &#xA;&#x9;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2]&#xA;) s2&#xA;LEFT JOIN (&#xA;&#x9;SELECT [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[Column 15] as DriverID &#xA;&#x9;FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;&#x9;Where [DatabaseLog].[dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSF'&#xA;) b on 1=1&#xA;WHERE exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;&#x9;         WHERE TransactionType in ('H', 'V'))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Infinite Loop\Foreach outbound file\Transaction type stage"
+              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{A398D413-CA51-4ACA-BA6B-8308351E7937}"
+              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Transaction type stage"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
+                  SQLTask:SqlStatementSource="DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAP]&#xA;WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2])&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND not exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime] WHERE ShipmentNumber= ShipmentNumber)&#xA;&#x9;&#xA;DELETE FROM [DatabaseLog].[dbo].[raTMS_LogTruckShipmentSAPDriver]&#xA;WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2])&#xA;&#x9;AND exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA;&#x9;AND not exists(SELECT * FROM [DatabaseLog].[dbo].[raTMS_LogTruckCheckPointTime] WHERE ShipmentNumber= ShipmentNumber)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -1414,11 +1432,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <DTS:PrecedenceConstraint
               DTS:refId="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 3]"
               DTS:CreationName=""
-              DTS:DTSID="{5FB7E8D5-6419-43FB-964C-DDCC7AEA0EC1}"
+              DTS:DTSID="{E8215352-464B-4837-956B-728E7A8B873F}"
               DTS:From="Package\Infinite Loop\Foreach outbound file\Stage 1"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 3"
-              DTS:To="Package\Infinite Loop\Foreach outbound file\Stage 2" />
+              DTS:To="Package\Infinite Loop\Foreach outbound file\Transaction type stage" />
             <DTS:PrecedenceConstraint
               DTS:refId="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 4]"
               DTS:CreationName=""
@@ -1444,6 +1462,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 6"
               DTS:To="Package\Infinite Loop\Foreach outbound file\Disappear" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 7]"
+              DTS:CreationName=""
+              DTS:DTSID="{C09B1738-C6FA-4294-8441-EE6379857A85}"
+              DTS:From="Package\Infinite Loop\Foreach outbound file\Transaction type stage"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 7"
+              DTS:To="Package\Infinite Loop\Foreach outbound file\Stage 2" />
           </DTS:PrecedenceConstraints>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
@@ -1522,11 +1548,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="128,42"
           Id="Package\Infinite Loop\Foreach outbound file\Disappear"
-          TopLeft="71,570" />
+          TopLeft="71,628" />
         <NodeLayout
           Size="195,42"
           Id="Package\Infinite Loop\Foreach outbound file\fst archive outbound file"
-          TopLeft="40,500" />
+          TopLeft="40,558" />
         <NodeLayout
           Size="111,42"
           Id="Package\Infinite Loop\Foreach outbound file\Legacy"
@@ -1542,7 +1568,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="114,42"
           Id="Package\Infinite Loop\Foreach outbound file\Stage 2"
-          TopLeft="74,426" />
+          TopLeft="74,484" />
         <NodeLayout
           Size="136,42"
           Id="Package\Infinite Loop\Foreach outbound file\Transformer"
@@ -1614,30 +1640,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 3]"
-          TopLeft="130.5,387">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39"
-              Start="0,0"
-              End="0,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 4]"
-          TopLeft="134.25,468">
+          TopLeft="134.25,526">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1683,7 +1687,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 6]"
-          TopLeft="136.25,542">
+          TopLeft="136.25,600">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1703,11 +1707,59 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Transaction type stage"
+          TopLeft="43,416" />
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 3]"
+          TopLeft="133.5,387">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 7]"
+          TopLeft="134,458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="438,678"
-          Size="438,721"
+          PanelSize="499,725"
+          Size="499,768"
           Id="Package\Infinite Loop\Foreach outbound file"
           TopLeft="38,269" />
         <NodeLayout
@@ -1738,18 +1790,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Infinite Loop.PrecedenceConstraints[Constraint 1]"
-          TopLeft="256,232">
+          TopLeft="255,232">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37"
+              EndConnector="32.5,37"
               Start="0,0"
-              End="0,29.5">
+              End="32.5,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="28.5,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5,18.5"
+                    Point2="32.5,18.5"
+                    Point3="32.5,22.5" />
+                  <mssgle:LineSegment
+                    End="32.5,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1761,8 +1825,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="604,1045"
-          Size="604,1088"
+          PanelSize="604,1092"
+          Size="604,1135"
           Id="Package\Infinite Loop"
           TopLeft="122,50" />
       </GraphLayout>
