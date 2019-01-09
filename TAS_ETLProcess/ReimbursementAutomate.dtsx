@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ReimbursementAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{CCE01C4C-36E8-40D7-A758-B0821818095A}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{C4120FD6-FD8E-4986-BB68-733B21FB806B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,12 +23,7 @@
       DTS:ObjectName="DatabaseLog_DB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=localhost\sqlexpress2012;User ID=sa;Initial Catalog=DatabaseLog;Provider=SQLNCLI11.1;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD3fFWNoMJWxlcOLddEb6m+AAAAAASAAACgAAAAEAAAANHQUt/aZGYisde0IVyOQwEYAAAAaEw95isxODnhSk7GC3AaJQuEm6yT3tMpFAAAAFsTCsL4OOAee7mbXXr1cgoHwloE</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=WIN-11KRJ2FGKRE;Initial Catalog=DatabaseLog;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -46,7 +41,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="874"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Inbound_Archive\2018-10-14-S2200006913.txt">
+          DTS:ConnectionString="D:\SAP_Process\Inboundor_Archive\2018-10-24-S2206299361.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -71,7 +66,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">2200006913</DTS:Property>
+        DTS:Name="ParameterValue">2206299361</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -79,23 +74,23 @@
       DTS:CreationName=""
       DTS:DTSID="{41AD0F9A-DF74-42E1-B74E-93816AFEA73F}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;C:\\TMS\\WebService\\FTP\\Inbound_Archive\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot;+ @[$Package::ShipmentNumber] +&quot;.txt&quot;"
+      DTS:Expression="&quot;D:\\SAP_Process\\Inboundor_Archive\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot;+ @[$Package::ShipmentNumber] +&quot;.txt&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="InboundArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound_Archive\2018-10-14-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">D:\SAP_Process\Inboundor_Archive\2018-10-24-S2206299361.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{AA49FB67-B3F6-4C41-9AF5-2A48491B2F63}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;C:\\TMS\\WebService\\FTP\\Inbound\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot; + @[$Package::ShipmentNumber] +&quot;.txt&quot;"
+      DTS:Expression="&quot;D:\\SAP_Process\\Inboundor\\&quot; +(DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , GETDATE()) +  &quot;-&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , GETDATE()), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , GETDATE()), 2) + &quot;-S&quot; + @[$Package::ShipmentNumber] +&quot;.txt&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="InboundFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\TMS\WebService\FTP\Inbound\2018-10-14-S2200006913.txt</DTS:VariableValue>
+        DTS:DataType="8">D:\SAP_Process\Inboundor\2018-10-24-S2206299361.txt</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -210,7 +205,7 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\dft Generate inbound file\Retrieve inbound data.Outputs[OLE DB Source Output].ExternalColumns[Priority]"
-                      dataType="i4"
+                      dataType="i8"
                       name="Priority" />
                     <externalMetadataColumn
                       refId="Package\dft Generate inbound file\Retrieve inbound data.Outputs[OLE DB Source Output].ExternalColumns[Value]"
@@ -430,7 +425,7 @@
     design-time-name="Package\dft Generate inbound file">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="185,42"
           Id="Package\dft Generate inbound file\Retrieve inbound data"
@@ -458,7 +453,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

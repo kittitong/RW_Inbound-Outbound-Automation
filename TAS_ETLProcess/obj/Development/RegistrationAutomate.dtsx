@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RegistrationAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{33C1705F-69F1-4FD4-8F88-274DDEF50556}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{51FD4032-3211-4225-BE57-2BD6C60D3EAC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,7 +40,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Column 0"
-              DTS:DTSID="{0D20E780-8CB2-429D-A65A-CBE1E1A19530}"
+              DTS:DTSID="{BF3DB155-4253-4A39-8CBF-F46023057359}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -54,7 +54,7 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="2"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Outbound_Archive" />
+          DTS:ConnectionString="D:\SAP_Process\Outboundor_Archive" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -65,7 +65,7 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="2"
-          DTS:ConnectionString="C:\TMS\WebService\FTP\Temp" />
+          DTS:ConnectionString="D:\SAP_Process\Temp" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -75,12 +75,7 @@
       DTS:ObjectName="WIN-11KRJ2FGKRE.DatabaseLog">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=localhost\sqlexpress2012;User ID=sa;Initial Catalog=DatabaseLog;Provider=SQLNCLI11.1;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADc6DVsE24k6ZRhCNlLHJyAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABDQ9RkVQejnByareJGO8J6AAAAAASAAACgAAAAEAAAAJhEM+tyC8O125gir+S5D4MYAAAA/dOkQ+3Vs1uGgmozaNg2vgHcI+WiWxLVFAAAAE+aTjeNgd/QOAF2ueNZw1fNZsND</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=localhost\sqlexpress2012;Initial Catalog=DatabaseLog;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -142,9 +137,9 @@
             <DTS:ObjectData>
               <ForEachFileEnumeratorProperties>
                 <FEFEProperty
-                  Folder="C:\TMS\WebService\FTP\Outbound" />
+                  Folder="D:\SAP_Process\Outboundor" />
                 <FEFEProperty
-                  FileSpec="*.txt" />
+                  FileSpec="S*.txt" />
                 <FEFEProperty
                   FileNameRetrievalType="0" />
                 <FEFEProperty
@@ -179,8 +174,8 @@
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{8D85491E-FBD4-4968-BE1E-9643EBA180E3}"
-              DTS:ObjectName="{8D85491E-FBD4-4968-BE1E-9643EBA180E3}"
+              DTS:DTSID="{093C2712-960C-48F2-9FEF-0CD33EB9B3BD}"
+              DTS:ObjectName="{093C2712-960C-48F2-9FEF-0CD33EB9B3BD}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::OutboundFileName" />
           </DTS:ForEachVariableMappings>
@@ -200,9 +195,9 @@
             <DTS:ObjectData>
               <ForEachFileEnumeratorProperties>
                 <FEFEProperty
-                  Folder="C:\TMS\WebService\FTP\Temp" />
+                  Folder="D:\SAP_Process\Temp" />
                 <FEFEProperty
-                  FileSpec="*.txt" />
+                  FileSpec="S*.txt" />
                 <FEFEProperty
                   FileNameRetrievalType="0" />
                 <FEFEProperty
@@ -226,7 +221,7 @@
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{28A85649-7CA7-4159-9148-1A7CC33E47EE}"
-                  SQLTask:SqlStatementSource="UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 1]  = LTRIM(RTRIM(SUBSTRING([Column 0], 1, 10)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 2]  = LTRIM(RTRIM(SUBSTRING([Column 0], 34, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 3]  = LTRIM(RTRIM(SUBSTRING([Column 0], 67, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 4]  = LTRIM(RTRIM(SUBSTRING([Column 0], 82, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 5]  = LTRIM(RTRIM(SUBSTRING([Column 0], 88, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 6]  = LTRIM(RTRIM(SUBSTRING([Column 0], 70, 5)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 7]  = LTRIM(RTRIM(SUBSTRING([Column 0], 69, 11)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 8]  = LTRIM(RTRIM(SUBSTRING([Column 0], 80, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 9]  = LTRIM(RTRIM(SUBSTRING([Column 0], 102, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 10] = LTRIM(RTRIM(SUBSTRING([Column 0], 112, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 11] = LTRIM(RTRIM(SUBSTRING([Column 0], 140, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 12] = LTRIM(RTRIM(SUBSTRING([Column 0], 379, 14))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 13] = LTRIM(RTRIM(SUBSTRING([Column 0], 240, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 14] = LTRIM(RTRIM(SUBSTRING([Column 0], 118, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 15] = LTRIM(RTRIM(SUBSTRING([Column 0], 64, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 16] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 1)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 17] = LTRIM(RTRIM(SUBSTRING([Column 0], 696, 30))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 18] = LTRIM(RTRIM(SUBSTRING([Column 0], 87, 40)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 19] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 20] = LTRIM(RTRIM(SUBSTRING([Column 0], 71, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 1]  = LTRIM(RTRIM(SUBSTRING([Column 0], 1, 10)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 2]  = LTRIM(RTRIM(SUBSTRING([Column 0], 34, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 3]  = LTRIM(RTRIM(SUBSTRING([Column 0], 67, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 4]  = LTRIM(RTRIM(SUBSTRING([Column 0], 82, 16)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 5]  = LTRIM(RTRIM(SUBSTRING([Column 0], 92, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 6]  = LTRIM(RTRIM(SUBSTRING([Column 0], 70, 5)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 7]  = LTRIM(RTRIM(SUBSTRING([Column 0], 69, 11)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 8]  = LTRIM(RTRIM(SUBSTRING([Column 0], 80, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 9]  = LTRIM(RTRIM(SUBSTRING([Column 0], 102, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 10] = LTRIM(RTRIM(SUBSTRING([Column 0], 112, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 11] = LTRIM(RTRIM(SUBSTRING([Column 0], 140, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 12] = LTRIM(RTRIM(SUBSTRING([Column 0], 379, 14))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 13] = LTRIM(RTRIM(SUBSTRING([Column 0], 240, 6)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 14] = LTRIM(RTRIM(SUBSTRING([Column 0], 118, 10))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 15] = LTRIM(RTRIM(SUBSTRING([Column 0], 64, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 16] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 1)))   FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 17] = LTRIM(RTRIM(SUBSTRING([Column 0], 696, 30))) FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 18] = LTRIM(RTRIM(SUBSTRING([Column 0], 87, 40)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 19] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 20] = LTRIM(RTRIM(SUBSTRING([Column 0], 71, 10)))  FROM [DatabaseLog].[dbo].[raTMS_LogShipment_Bulk]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -300,14 +295,35 @@
                   VSTAMinorVersion="0"
                   Language="CSharp">
                   <ProjectItem
-                    Name="Properties\Settings.settings"
-                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                    Name="Properties\AssemblyInfo.cs"
+                    Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_104061de0df3455ca6120ecf2a2290a3")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_104061de0df3455ca6120ecf2a2290a3")]
+[assembly: AssemblyCopyright("Copyright @  2018")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
                   <ProjectItem
                     Name="Properties\Resources.resx"
                     Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -676,35 +692,14 @@ namespace ST_104061de0df3455ca6120ecf2a2290a3.Properties {
     }
 }]]></ProjectItem>
                   <ProjectItem
-                    Name="Properties\AssemblyInfo.cs"
-                    Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_104061de0df3455ca6120ecf2a2290a3")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_104061de0df3455ca6120ecf2a2290a3")]
-[assembly: AssemblyCopyright("Copyright @  2018")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                    Name="Properties\Settings.settings"
+                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
                   <ProjectItem
                     Name="Properties\Resources.Designer.cs"
                     Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1501,8 +1496,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{485D8BFF-60A4-412D-9421-1EEA11E2B98B}"
-              DTS:ObjectName="{485D8BFF-60A4-412D-9421-1EEA11E2B98B}"
+              DTS:DTSID="{5579D3D6-0E24-4BD3-A14B-C64D6E546E65}"
+              DTS:ObjectName="{5579D3D6-0E24-4BD3-A14B-C64D6E546E65}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::ProcessFileName" />
           </DTS:ForEachVariableMappings>
@@ -1521,7 +1516,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           <DTS:ObjectData>
             <WMIEWTaskData
               WMIConnectionName="{B3CFF36F-4DA9-4015-8150-32E9CE2A2C7E}"
-              WQLQuerySource="SELECT * FROM __InstanceCreationEvent WITHIN 10 &#xA;WHERE TargetInstance ISA &quot;CIM_DirectoryContainsFile&quot; &#xA;and TargetInstance.GroupComponent= &quot;Win32_Directory.Name=\&quot;c:\\\\TMS\\\\WebService\\\\FTP\\\\Outbound\&quot;&quot; " />
+              WQLQuerySource="SELECT * FROM __InstanceCreationEvent WITHIN 10 &#xA;WHERE TargetInstance ISA &quot;CIM_DirectoryContainsFile&quot; &#xA;and TargetInstance.GroupComponent= &quot;Win32_Directory.Name=\&quot;D:\\\\SAP_Process\\\\Outboundor\&quot;&quot; "
+              AfterTimeout="ReturnWithSuccess"
+              Timeout="30" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1572,6 +1569,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Size="123,42"
           Id="Package\Infinite Loop\Foreach outbound file\Bulk Data"
           TopLeft="63,182" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Disappear"
+          TopLeft="64,605" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Infinite Loop\Foreach outbound file\fst archive outbound file"
+          TopLeft="35,530" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Legacy"
+          TopLeft="69,27" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\Infinite Loop\Foreach outbound file\On Error"
+          TopLeft="239,103" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Stage 1"
+          TopLeft="69,253" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Stage 2"
+          TopLeft="70,392" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Transaction type stage"
+          TopLeft="39,324" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Transformer"
+          TopLeft="55,105" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Infinite Loop\Foreach outbound file\Update relative compartment"
+          TopLeft="19,460" />
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint]"
+          TopLeft="123.75,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 1]"
           TopLeft="123.75,147">
@@ -1616,116 +1671,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="128,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Disappear"
-          TopLeft="64,605" />
-        <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 6]"
-          TopLeft="130.25,572">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Infinite Loop\Foreach outbound file\fst archive outbound file"
-          TopLeft="35,530" />
-        <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 8]"
-          TopLeft="130.25,502">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28"
-              Start="0,0"
-              End="0,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="111,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Legacy"
-          TopLeft="69,27" />
-        <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint]"
-          TopLeft="123.75,69">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="118,42"
-          Id="Package\Infinite Loop\Foreach outbound file\On Error"
-          TopLeft="239,103" />
-        <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 5]"
-          TopLeft="191,125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="48,0"
-              Start="0,0"
-              End="40.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="40.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="5.00865234375,5,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="114,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Stage 1"
-          TopLeft="69,253" />
         <EdgeLayout
           Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 3]"
           TopLeft="129.5,295">
@@ -1740,32 +1685,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="114,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Stage 2"
-          TopLeft="70,392" />
-        <EdgeLayout
-          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 7]"
-          TopLeft="130,366">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26"
-              Start="0,0"
-              End="0,18.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1796,18 +1715,96 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Transformer"
-          TopLeft="55,105" />
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Transaction type stage"
-          TopLeft="39,324" />
-        <NodeLayout
-          Size="218,42"
-          Id="Package\Infinite Loop\Foreach outbound file\Update relative compartment"
-          TopLeft="19,460" />
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 5]"
+          TopLeft="191,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48,0"
+              Start="0,0"
+              End="40.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.00865234375,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 6]"
+          TopLeft="130.25,572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 7]"
+          TopLeft="130,366">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Infinite Loop\Foreach outbound file.PrecedenceConstraints[Constraint 8]"
+          TopLeft="130.25,502">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
