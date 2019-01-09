@@ -1,0 +1,1386 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/28/2018 8:31:47 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MNB580267L"
+  DTS:CreatorName="MINORGROUP\kitti_to"
+  DTS:DTSID="{41512455-7BC0-4A39-BCAE-1217667F6A4F}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ChildRegistration"
+  DTS:PackageType="5"
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{EE152DA6-5AAC-4B3E-8E33-22CCA526281D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0481CB38-CBF4-4EBA-8F10-55302D7FC7B5}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::ProcessingFileFullPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1054"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="874"
+          DTS:ConnectionString="D:\SAP_Process_test\Temp\S0000000037519012.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="900"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{0B5A6E3E-C284-45AE-A660-4FAA2C911EAC}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[oleDB_DatabaseLog]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+      DTS:ObjectName="oleDB_DatabaseLog">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost\sqlexpress;Initial Catalog=DatabaseLog_Surat;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Archive folder of SAP outbound files"
+      DTS:DTSID="{7009FAD9-3234-4243-A914-040864B690FA}"
+      DTS:ObjectName="ArchiveFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">D:\SAP_Process_test\Outboundor_Archive</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="SAP outbound file name"
+      DTS:DTSID="{5D29E92F-6641-4887-BC0A-C7589AFDAF4E}"
+      DTS:ObjectName="OutboundFileName"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">S0000000037519012.txt</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="SAP outbound folder"
+      DTS:DTSID="{7D41FC28-6605-456C-A429-9A825BCE7434}"
+      DTS:ObjectName="OutboundFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">D:\SAP_Process_test\Outboundor</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Folder to keep SAP outbound files temporary for processing"
+      DTS:DTSID="{9AD150D0-10C9-46B1-8DF2-3E2D78F2F2FF}"
+      DTS:ObjectName="ProcessFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">D:\SAP_Process_test\Temp</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2DA30223-C4BB-4AC3-8DCA-AEE9020D0A26}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ArchiveFolder]+&quot;\\&quot;+ @[$Package::OutboundFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ArchiveFileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\SAP_Process_test\Outboundor_Archive\S0000000037519012.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E61D024-766B-4438-A9DE-F09BF3869F93}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::OutboundFolder] + &quot;\\&quot; +@[$Package::OutboundFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OutboundFileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\SAP_Process_test\Outboundor\S0000000037519012.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9589BC92-4297-48E7-97BB-AC743EF8CB03}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ProcessFolder]+&quot;\\&quot;+ @[$Package::OutboundFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProcessingFileFullPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\SAP_Process_test\Temp\S0000000037519012.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D007E610-83A1-4926-94FE-E93FC6868462}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Stage2ResultCode">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\fst Delete processing file"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Clear All Print"
+      DTS:DTSID="{513FA609-6534-40AA-AD0C-0EEBEAC44D3D}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fst Delete processing file"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="DeleteFile"
+          TaskSourcePath="User::ProcessingFileFullPath"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sc Data processing container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{D19B1E6F-FD3D-44BB-932E-56BCCAE588B0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sc Data processing container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Bulk Data"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{590822F7-2EAF-4E70-928F-0A88988BBB93}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 1]  = LTRIM(RTRIM(SUBSTRING([Column 0], 1, 10)))   FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 2]  = LTRIM(RTRIM(SUBSTRING([Column 0], 34, 16)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 3]  = LTRIM(RTRIM(SUBSTRING([Column 0], 67, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 4]  = LTRIM(RTRIM(SUBSTRING([Column 0], 82, 16)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 5]  = LTRIM(RTRIM(SUBSTRING([Column 0], 92, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 6]  = LTRIM(RTRIM(SUBSTRING([Column 0], 70, 5)))   FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 7]  = LTRIM(RTRIM(SUBSTRING([Column 0], 69, 11)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 8]  = LTRIM(RTRIM(SUBSTRING([Column 0], 80, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 9]  = LTRIM(RTRIM(SUBSTRING([Column 0], 102, 10))) FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 10] = LTRIM(RTRIM(SUBSTRING([Column 0], 112, 6)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 11] = LTRIM(RTRIM(SUBSTRING([Column 0], 140, 6)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 12] = LTRIM(RTRIM(SUBSTRING([Column 0], 379, 14))) FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 13] = LTRIM(RTRIM(SUBSTRING([Column 0], 240, 6)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 14] = LTRIM(RTRIM(SUBSTRING([Column 0], 118, 10))) FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 15] = LTRIM(RTRIM(SUBSTRING([Column 0], 64, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 16] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 1)))   FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 17] = LTRIM(RTRIM(SUBSTRING([Column 0], 696, 30))) FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 18] = LTRIM(RTRIM(SUBSTRING([Column 0], 87, 40)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 19] = LTRIM(RTRIM(SUBSTRING([Column 0], 66, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk SET [Column 20] = LTRIM(RTRIM(SUBSTRING([Column 0], 71, 10)))  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\est Set importing successfully"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B6171F5A-BD49-4FEF-A5E1-EE27ADBC19BF}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="est Set importing successfully"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="UPDATE [dbo].[raTMS_LogOutboundSAP]&#xA;SET Success=1,&#xA;    ShipmentNumber=(SELECT TOP 1 ShipmentNumber FROM dbo.raTMS_LogShipment_Bulk_Stage_2)&#xA;WHERE ID= (SELECT MAX(ID) FROM [dbo].[raTMS_LogOutboundSAP] WHERE FileName=?)    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::OutboundFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Legacy"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Prerequisites"
+          DTS:DTSID="{AE644203-1C6D-47D7-AE5C-ED1B1E9F653D}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Legacy"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="delete from raTMS_LogShipment_Bulk_Stage_2&#xA;delete from raTMS_LogShipment_Bulk" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Stage 1"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Stage 1"
+          DTS:DTSID="{19E4B067-107E-4D92-8A3A-238295B10E64}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Stage 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].raTMS_LogShipment_Bulk_Stage_2 (SAPOutboundNumber, FrontPlate, BackPlate, VBELN, MATNR, POSNR, Quantity, CompartmentNumber)&#xA;&#xA;SELECT&#xA; [Column 2]&#xA; ,[Column 8]&#xA; ,[Column 7]&#xA; ,[Column 9]&#xA; ,[Column 10]&#xA; ,[Column 11]&#xA; ,[Column 13]&#xA; ,[Column 16]&#xA;FROM [dbo].[raTMS_LogShipment_Bulk] where [Column 1] like 'E2OILSQ001'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [TerminalCode] = [dbo].raTMS_LogShipment_Bulk.[Column 6] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA; UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [ShipmentNumber] = [dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA; UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [Carrier] = [dbo].raTMS_LogShipment_Bulk.[Column 5] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSA'&#xA;&#xA; UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [SealNumber] = [dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DateTime] = [dbo].raTMS_LogShipment_Bulk.[Column 12] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'EDI_DC40'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [CustomerID] = [dbo].raTMS_LogShipment_Bulk.[Column 14] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSI'&#xA;   AND [dbo].raTMS_LogShipment_Bulk.[column 20] = [dbo].raTMS_LogShipment_Bulk_Stage_2.VBELN&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [DriverID] = [dbo].raTMS_LogShipment_Bulk.[Column 15] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSF'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDNO] = [dbo].raTMS_LogShipment_Bulk.[Column 19] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OLL01'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.LIDADDON]= [dbo].raTMS_LogShipment_Bulk.[Column 3] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [addFld.EXTDELNR]= [dbo].raTMS_LogShipment_Bulk.[Column 4] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'&#xA;&#xA;UPDATE [dbo].raTMS_LogShipment_Bulk_Stage_2 SET [TransactionType]= [dbo].raTMS_LogShipment_Bulk.[Column 16] FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSH001'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Stage 2"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Stage 2"
+          DTS:DTSID="{46A24695-CE19-4875-B18D-B955F1240D57}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Stage 2"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="IF exists(SELECT * FROM [dbo].raTMS_LogTruckShipmentSAP a&#xA;    INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;    WHERE b.TransactionType ='H' OR b.TransactionType ='V')&#xA;BEGIN&#xA; UPDATE [dbo].[raTMS_LogOutboundSAP]&#xA; SET ErrorMessage = 'Cannot import outbound file  to TAS System! Shipment number ' &#xA;                    + (SELECT TOP 1 ShipmentNumber FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]) &#xA;                    + ' already exist in the system.'&#xA; WHERE ID= (SELECT MAX(ID) FROM [dbo].[raTMS_LogOutboundSAP] WHERE FileName=?)    &#xA;&#xA; SELECT 0 as 'ResultCode'&#xA;END&#xA;ELSE&#xA;BEGIN    &#xA; &#xA; INSERT INTO [dbo].raTMS_LogTruckShipmentSAP (SAPOutboundNumber, TerminalCode, ShipmentNumber, SealNumber, DriverID, Carrier, FrontPlate, BackPlate, CompartmentNumber, Quantity, VBELN, MATNR, POSNR, DateTime, CustomerID, RegistrationDate, CompartmentNumber_relative)&#xA; SELECT&#xA;  [SAPOutboundNumber]&#xA;  ,[AddFld.LIDNO]&#xA;  ,[ShipmentNumber]&#xA;  ,[SealNumber]&#xA;  ,[DriverID]&#xA;  ,[Carrier]&#xA;  ,[FrontPlate]&#xA;  ,[BackPlate]&#xA;  ,[CompartmentNumber]&#xA;  ,[Quantity]&#xA;  ,[VBELN]&#xA;  ,[MATNR]&#xA;  ,[POSNR]&#xA;  ,[DateTime]&#xA;  ,[CustomerID]&#xA;  ,GETDATE()&#xA;  ,[CompartmentNumber]&#xA; FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA; WHERE TransactionType in ('H', 'V')&#xA;&#xA;&#xA; INSERT INTO [dbo].[raTMS_LogTruckShipmentSAPDriver]([ShipmentNumber],[DriverID])&#xA; SELECT [ShipmentNumber],DriverID&#xA; FROM (&#xA;  SELECT TOP 1 [ShipmentNumber] &#xA;  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]&#xA; ) s2&#xA; LEFT JOIN (&#xA;  SELECT [dbo].raTMS_LogShipment_Bulk.[Column 15] as DriverID &#xA;  FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;  Where [dbo].raTMS_LogShipment_Bulk.[column 1] like 'E2OILSF'&#xA; ) b on 1=1&#xA; WHERE exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;     WHERE TransactionType in ('H', 'V'))&#xA;&#xA; SELECT 1 as 'ResultCode'&#xA;END     "
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="ResultCode"
+                SQLTask:DtsVariableName="User::Stage2ResultCode" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::OutboundFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Transaction type stage"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D6BAA1EE-53A9-4A25-AFBE-1EF19FF7BB26}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Transaction type stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="DELETE FROM [dbo].[raTMS_LogTruckShipmentSAP] &#xA;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA; AND exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA; AND (ShipmentNumber not in (SELECT ShipmentNumber FROM [dbo].[raTMS_LogTruckCheckPointTime]))&#xA; &#xA;DELETE FROM [dbo].[raTMS_LogTruckShipmentSAPDriver]  &#xA;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA; AND exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA; AND (ShipmentNumber not in (SELECT ShipmentNumber FROM [dbo].[raTMS_LogTruckCheckPointTime]))&#xA;&#xA; UPDATE [dbo].[raTMS_LogOutboundSAP]&#xA; SET FileState = (SELECT TOP 1 [Column 16] FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001'),&#xA;         ShipmentNumber=(SELECT TOP 1 [Column 3] FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001')&#xA; WHERE ID= (SELECT MAX(ID) FROM [dbo].[raTMS_LogOutboundSAP] WHERE FileName=?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::OutboundFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Transformer"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5A34E29D-A3E5-40D9-AE07-EB7C0F668A1B}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Transformer"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\sc Data processing container\Transformer\Convert"
+                  componentClassID="{62B1106C-7DB8-4EC8-ADD6-4C664DFFC54A}"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Convert"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\sc Data processing container\Transformer\Convert.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\sc Data processing container\Transformer\Convert.Inputs[Data Conversion Input].Columns[Column 0]"
+                          cachedCodepage="874"
+                          cachedDataType="str"
+                          cachedLength="900"
+                          cachedName="Column 0"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].Columns[Column 0]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\sc Data processing container\Transformer\Convert.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Output].Columns[Copy of Column 0]"
+                          codePage="874"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="900"
+                          lineageId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Output].Columns[Copy of Column 0]"
+                          name="Copy of Column 0"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].Columns[Column 0]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\sc Data processing container\Transformer\Convert.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\sc Data processing container\Transformer\DatabaseLog"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DatabaseLog"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ratMS_LogShipment_Bulk]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\sc Data processing container\Transformer\DatabaseLog.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[oleDB_DatabaseLog]"
+                      connectionManagerRefId="Package.ConnectionManagers[oleDB_DatabaseLog]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="IgnoreFailure"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                          cachedCodepage="874"
+                          cachedDataType="str"
+                          cachedLength="900"
+                          cachedName="Column 0"
+                          externalMetadataColumnId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].Columns[Column 0]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                          codePage="874"
+                          dataType="str"
+                          length="1000"
+                          name="Column 0" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 1]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 1" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 2]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 2" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 3]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 3" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 4]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 4" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 5]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 5" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 6]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 6" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 7]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 7" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 8]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 8" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 9]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 9" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 10]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 10" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 11]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 11" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 12]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 12" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 13]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 13" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 14]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 14" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 15]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 15" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 16]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 16" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 17]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 17" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 18]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 18" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 19]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 19" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 20]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 20" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 21]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 21" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 22]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 22" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 23]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 23" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 24]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 24" />
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input].ExternalColumns[Column 25]"
+                          codePage="874"
+                          dataType="str"
+                          length="50"
+                          name="Column 25" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\sc Data processing container\Transformer\DatabaseLog.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\DatabaseLog.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\DatabaseLog.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\DatabaseLog.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\sc Data processing container\Transformer\Outbound"
+                  componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1054"
+                  name="Outbound"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\sc Data processing container\Transformer\Outbound.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].Columns[Column 0]"
+                          codePage="874"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                          length="900"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].Columns[Column 0]"
+                          name="Column 0"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                          codePage="874"
+                          dataType="str"
+                          length="900"
+                          name="Column 0" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="874"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\sc Data processing container\Transformer.Paths[Data Conversion Output]"
+                  endId="Package\sc Data processing container\Transformer\DatabaseLog.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\sc Data processing container\Transformer\Convert.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\sc Data processing container\Transformer.Paths[Flat File Source Output]"
+                  endId="Package\sc Data processing container\Transformer\Convert.Inputs[Data Conversion Input]"
+                  name="Flat File Source Output"
+                  startId="Package\sc Data processing container\Transformer\Outbound.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Data processing container\Update relative compartment"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{600C40AE-6E64-4DC3-9271-7202382E4A4A}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update relative compartment"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="MERGE INTO [dbo].[raTMS_LogTruckShipmentSAP] d&#xA;USING ( &#xA; SELECT ShipmentNumber, BackPlate, CompartmentNumber&#xA; FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]  s2&#xA; WHERE (TransactionType='H' OR TransactionType='V')&#xA; AND BackPlate &lt;&gt; (&#xA;   SELECT TOP 1 BackPlate &#xA;   FROM [dbo].[raTMS_LogTruckShipmentSAP] &#xA;   WHERE ShipmentNumber = s2.ShipmentNumber&#xA;   ORDER BY ID&#xA;    )&#xA; GROUP BY ShipmentNumber, BackPlate, CompartmentNumber&#xA;         ) s&#xA;ON(          (d.ShipmentNumber = s.ShipmentNumber) &#xA;        AND (d.BackPlate = s.BackPlate)&#xA;        AND (d.CompartmentNumber = s.CompartmentNumber) )&#xA;WHEN MATCHED THEN UPDATE SET d.CompartmentNumber_relative=ISNULL((SELECT MAX(COMP_NO) &#xA;                FROM [dbo].[SAP_TU_COMPARTMENT_DATA]&#xA;            where TU_NO=s.BackPlate) &#xA;                  + s.CompartmentNumber,&#xA;        s.CompartmentNumber);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{C51E97C1-F1BB-49CB-98B0-7687883D9F8C}"
+          DTS:From="Package\sc Data processing container\Legacy"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\sc Data processing container\Transformer" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{0ACD9E16-3976-408A-8BAD-4069D4DF4DD8}"
+          DTS:From="Package\sc Data processing container\Transformer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\sc Data processing container\Bulk Data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{95186234-70E6-4A67-85F7-302CC2A06198}"
+          DTS:From="Package\sc Data processing container\Bulk Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\sc Data processing container\Stage 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{BE73D84C-923E-4850-9D0D-3978A8809A09}"
+          DTS:From="Package\sc Data processing container\Stage 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\sc Data processing container\Transaction type stage" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{CF325122-1E8A-4D78-A4B4-FCDDCF67F577}"
+          DTS:From="Package\sc Data processing container\Transaction type stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\sc Data processing container\Stage 2" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{BE44684D-E006-42A3-B1AA-F341524255F5}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::Stage2ResultCode]==1"
+          DTS:From="Package\sc Data processing container\Stage 2"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\sc Data processing container\Update relative compartment" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{4074D845-5A32-45C4-B42C-D49074287FB0}"
+          DTS:From="Package\sc Data processing container\Update relative compartment"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\sc Data processing container\est Set importing successfully" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sc Moving file container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{93BB299E-A937-49A9-B678-9F408C762681}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sc Moving file container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\sc Moving file container\est log incomming outboud filename"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D8B6A053-9DE8-4A2C-8B54-358F51638DD8}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="est log incomming outboud filename"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
+              SQLTask:SqlStatementSource="IF (EXISTS (SELECT * &#xA;                 FROM INFORMATION_SCHEMA.TABLES &#xA;                 WHERE TABLE_SCHEMA = 'dbo' &#xA;                 AND  TABLE_NAME = 'raTMS_LogOutboundSAP'))&#xA;BEGIN&#xA;     INSERT INTO [dbo].[raTMS_LogOutboundSAP](FileName) &#xA;&#x9;                                                    VALUES(?)&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Package::OutboundFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Moving file container\fst archive outbound file"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="File System Task"
+          DTS:DTSID="{9D368577-83A2-4C41-B1EF-9E39DDCD5386}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="fst archive outbound file"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::OutboundFileFullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="$Package::ArchiveFolder"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\sc Moving file container\fst Copy file to processing folder"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="File System Task"
+          DTS:DTSID="{AEABFBAD-4EAA-49C8-B330-E65D5E60E466}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="fst Copy file to processing folder"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::ArchiveFileFullPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="$Package::ProcessFolder"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Moving file container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{DC401C92-9FF2-4BB8-BAB3-B4BEA7ACB617}"
+          DTS:EvalOp="3"
+          DTS:Expression="(LOWER(LEFT(@[$Package::OutboundFileName], 1 ))  == &quot;s&quot;)  &amp;&amp; (LOWER(RIGHT(@[$Package::OutboundFileName], 3 )) == &quot;txt&quot;)"
+          DTS:From="Package\sc Moving file container\fst archive outbound file"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\sc Moving file container\fst Copy file to processing folder" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\sc Moving file container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{B3145FAF-3265-4DFD-A9BA-9F76264FA630}"
+          DTS:From="Package\sc Moving file container\est log incomming outboud filename"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\sc Moving file container\fst archive outbound file" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{61BA0B25-55CB-4495-AAF2-2A6A66CF7D52}"
+      DTS:From="Package\sc Data processing container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\fst Delete processing file"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA098A85-6A17-4E21-9AA4-CE10BAADD596}"
+      DTS:From="Package\sc Moving file container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\sc Data processing container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="207,42"
+          Id="Package\fst Delete processing file"
+          TopLeft="573,1136" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\sc Data processing container\Bulk Data"
+          TopLeft="98,196" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\sc Data processing container\est Set importing successfully"
+          TopLeft="60,588" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\sc Data processing container\Legacy"
+          TopLeft="93,60" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\sc Data processing container\Stage 1"
+          TopLeft="100,271" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\sc Data processing container\Stage 2"
+          TopLeft="84,421" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\sc Data processing container\Transaction type stage"
+          TopLeft="80,349" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\sc Data processing container\Transformer"
+          TopLeft="93,129" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\sc Data processing container\Update relative compartment"
+          TopLeft="63,509" />
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="173.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="175,171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="175.75,238">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="174.75,313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="174,391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="173,463">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container.PrecedenceConstraints[Constraint 9]"
+          TopLeft="171,551">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="372,685"
+          Size="372,728"
+          Id="Package\sc Data processing container"
+          TopLeft="484,366" />
+        <NodeLayout
+          Size="199,43"
+          Id="Package\sc Moving file container\est log incomming outboud filename"
+          TopLeft="83,16" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\sc Moving file container\fst archive outbound file"
+          TopLeft="95,94" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\sc Moving file container\fst Copy file to processing folder"
+          TopLeft="62,176" />
+        <EdgeLayout
+          Id="Package\sc Moving file container.PrecedenceConstraints[Constraint]"
+          TopLeft="176.75,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Moving file container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="178.75,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="359,263"
+          Size="359,306"
+          Id="Package\sc Moving file container"
+          TopLeft="485,28" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="673.25,1094">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,11.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="667.25,334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\sc Data processing container\Transformer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\sc Data processing container\Transformer\DatabaseLog"
+          TopLeft="761,217" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\sc Data processing container\Transformer\Convert"
+          TopLeft="452,140" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\sc Data processing container\Transformer\Outbound"
+          TopLeft="167,42" />
+        <EdgeLayout
+          Id="Package\sc Data processing container\Transformer.Paths[Data Conversion Output]"
+          TopLeft="509,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="321.5,35"
+              Start="0,0"
+              End="321.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="317.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="317.5,17.5"
+                    Point2="321.5,17.5"
+                    Point3="321.5,21.5" />
+                  <mssgle:LineSegment
+                    End="321.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\sc Data processing container\Transformer.Paths[Flat File Source Output]"
+          TopLeft="231,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="278,56"
+              Start="0,0"
+              End="278,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="274,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="274,28"
+                    Point2="278,28"
+                    Point3="278,32" />
+                  <mssgle:LineSegment
+                    End="278,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
