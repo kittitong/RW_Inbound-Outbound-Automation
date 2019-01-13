@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>TAS_ETLProcess</Name>
-    <LastWriteTime>2018-10-24T03:44:19.9606101Z</LastWriteTime>
+    <LastWriteTime>2019-01-09T10:00:17.2758801Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,7 +18,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>RegistrationAutomate.dtsx</Name>
-      <LastWriteTime>2018-10-21T10:50:53.7804138Z</LastWriteTime>
+      <LastWriteTime>2018-10-24T13:59:28.0183199Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -38,7 +38,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ReimbursementAutomate.dtsx</Name>
-      <LastWriteTime>2018-10-24T03:44:16.9790139Z</LastWriteTime>
+      <LastWriteTime>2018-10-24T13:58:20.8264768Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ChildRegistration.dtsx</Name>
+      <LastWriteTime>2019-01-09T15:05:54.5849991Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>MasterRegistration.dtsx</Name>
+      <LastWriteTime>2019-01-09T06:47:58.0314927Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

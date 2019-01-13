@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/28/2018 8:31:47 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ChildRegistration"
   DTS:PackageType="5"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{A29E0990-3AB2-4960-9B1A-1B13A21C686A}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{18D20F5D-B950-47A4-A39E-4DD4BD5F5FD4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -266,20 +266,20 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\sc Data processing container\Shipment status (H,L,V) processing"
+          DTS:refId="Package\sc Data processing container\Stage 2"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="Transfer staged data to shipment tables"
           DTS:DTSID="{46A24695-CE19-4875-B18D-B955F1240D57}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Shipment status (H,L,V) processing"
+          DTS:ObjectName="Stage 2"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
-              SQLTask:SqlStatementSource="IF not exists(select * from [dbo].[raTMS_LogShipment_Bulk_Stage_2])&#xA;BEGIN&#xA;&#x9;UPDATE [shipment].[OutboundSAP]&#xA;&#x9;SET ErrorMessage = 'Outbound file format ไม่ถูกต้อง!'&#xA;&#x9;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)    &#xA;&#x9;&#xA;&#x9;SELECT 0 as 'ResultCode'&#xA;END&#xA;ELSE IF not exists(SELECT * &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FROM [shipment].[ShipmentMaster] a&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE b.TransactionType ='L'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND a.Active=1)&#xA;BEGIN&#xA;&#x9;UPDATE [shipment].[OutboundSAP]&#xA;&#x9;SET ErrorMessage = 'Shipment number ที่จะลบไม่มีในระบบ!'&#xA;&#x9;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)    &#xA;&#x9;&#xA;&#x9;SELECT 0 as 'ResultCode'&#xA;END&#xA;ELSE IF exists(SELECT * &#xA;&#x9;&#x9;&#x9;&#x9;FROM [shipment].[ShipmentMaster] a&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;&#x9;&#x9;&#x9;&#x9;WHERE b.TransactionType ='H' OR b.TransactionType ='L' OR b.TransactionType ='V'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND a.Active=1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND (status&lt;&gt; (SELECT StatusCode FROM [dbo].[raTMS_ConfigStatus] where StatusDescriptions='Registered')))&#xA;BEGIN&#xA;&#x9;UPDATE [shipment].[OutboundSAP]&#xA;&#x9;SET ErrorMessage = 'Shipment ได้ผ่านการ Billing หรือได้ Canceled แล้ว!'&#xA;&#x9;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)    &#xA;&#x9;&#xA;&#x9;SELECT 0 as 'ResultCode'&#xA;END&#xA;/*Below this line is shipment status (H,L,V) Registered*/&#xA;ELSE IF exists(SELECT * &#xA;&#x9;&#x9;&#x9;   FROM [shipment].[ShipmentMaster] a&#xA;&#x9;&#x9;&#x9;   INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;&#x9;&#x9;&#x9;   INNER JOIN [shipment].[OutboundSAP] o on o.ShipmentId=a.ID&#xA;&#x9;&#x9;&#x9;   WHERE b.TransactionType ='H'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND a.Active=1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND o.FileState'V')&#xA;BEGIN&#xA;&#x9;UPDATE [shipment].[OutboundSAP]&#xA;&#x9;SET ErrorMessage = 'ไม่อนุญาตให้ import ไฟล์ status H เนื่องจากมีไฟล์ status V ในระบบ!'&#xA;&#x9;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)    &#xA;&#x9;&#xA;&#x9;SELECT 0 as 'ResultCode'&#xA;END&#xA;ELSE IF exists(SELECT * &#xA;&#x9;&#x9;&#x9;&#x9;FROM [shipment].[ShipmentMaster] a&#xA;&#x9;&#x9;&#x9;&#x9;INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;&#x9;&#x9;&#x9;&#x9;WHERE b.TransactionType ='L'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND a.Active=1&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND (status=(SELECT StatusCode FROM [dbo].[raTMS_ConfigStatus] where StatusDescriptions='Registered')))&#xA;BEGIN&#xA;&#x9;UPDATE [shipment].[ShipmentMaster]&#xA;&#x9;SET Active=0&#xA;       ,UpdatedDate=GETDATE()&#xA;&#x9;   ,UpdatedBy=1&#xA;&#x9;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA;      AND exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType='L')&#xA;      AND Active=1&#xA;      AND (status= (SELECT StatusCode FROM [dbo].[raTMS_ConfigStatus] where StatusDescriptions='Registered'));&#xA;&#x9; &#xA;&#x9;SELECT 1 as 'ResultCode'&#xA;END&#xA;/*Below this line is shipment status (H,V) Registered*/&#xA;ELSE&#xA;BEGIN    &#xA;   /*Process for outbound status H and V*/   &#xA;   DECLARE @ShipmentId int = 0&#xA;&#xA;   UPDATE [shipment].[ShipmentMaster]&#xA;   SET Active=0&#xA;      ,UpdatedDate=GETDATE()&#xA;&#x9;  ,UpdatedBy=1&#xA;   WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA;     AND exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('H', 'V'))&#xA;     AND Active=1&#xA;     AND (status= (SELECT StatusCode FROM [dbo].[raTMS_ConfigStatus] where StatusDescriptions='Registered'));&#xA;&#xA; &#xA;   INSERT INTO [shipment].[ShipmentMaster] (SAPOutboundNumber, TerminalCode, ShipmentNumber, SealNumber, VehicleNumber, AccountDateTime)&#xA;   SELECT TOP 1&#xA;      [SAPOutboundNumber]&#xA;     ,[AddFld.LIDNO]&#xA;     ,[ShipmentNumber]&#xA;     ,[SealNumber]&#xA;     ,[FrontPlate]&#xA;     ,[DateTime]&#xA;   FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;   WHERE TransactionType in ('H', 'V')&#xA; &#xA;   SET @ShipmentId = (SELECT MAX(ID) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;  FROM [shipment].[ShipmentMaster]&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;  WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] ))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;   INSERT INTO [shipment].[ShipmentDetailSAP] (ShipmentId, Carrier, BackPlate, CompartmentNumber, CompartmentNumber_relative, Quantity, VBELN, MATNR, POSNR, CustomerID)&#xA;   SELECT&#xA;&#x9; @ShipmentId&#xA;&#x9;,[Carrier]&#xA;&#x9;,[BackPlate]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[Quantity]&#xA;&#x9;,[VBELN]&#xA;&#x9;,[MATNR]&#xA;&#x9;,[POSNR]&#xA;&#x9;,[CustomerID]&#xA;   FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;   WHERE TransactionType in ('H', 'V')&#xA;&#xA;   INSERT INTO [shipment].[ShipmentDriverSAP](ShipmentId,Driver_id)&#xA;   SELECT  @ShipmentId&#xA;&#x9; &#x9;  ,[Column 15] as DriverID &#xA;   FROM [dbo].[raTMS_LogShipment_Bulk]&#xA;   Where [column 1] like 'E2OILSF'&#xA;       AND exists(SELECT * &#xA;&#x9;&#x9;&#x9;&#x9;  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;&#x9;&#x9;&#x9;&#x9;  WHERE TransactionType in ('H', 'V')&#xA;&#x9;&#x9;&#x9;&#x9;  )&#x9; &#xA;   SELECT 1 as 'ResultCode'&#xA;END     "
+              SQLTask:SqlStatementSource="IF exists(SELECT * &#xA;&#x9;&#x9;  FROM [shipment].[ShipmentMaster] a&#xA;          INNER JOIN [dbo].[raTMS_LogShipment_Bulk_Stage_2] b on b.ShipmentNumber=a.ShipmentNumber&#xA;&#x9;&#x9;  WHERE (b.TransactionType ='H' OR b.TransactionType ='V')&#xA;&#x9;&#x9;&#x9;&#x9;AND a.Active=1)&#xA;BEGIN&#xA; UPDATE [shipment].[OutboundSAP]&#xA; SET ErrorMessage = 'Cannot import outbound file  to TAS System! Shipment number ' &#xA;                    + (SELECT TOP 1 ShipmentNumber FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]) &#xA;                    + ' already exist in the system.'&#xA; WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)    &#xA;&#xA; SELECT 0 as 'ResultCode'&#xA;END&#xA;ELSE&#xA;BEGIN    &#xA; DECLARE @ShipmentId int = 0&#xA;&#xA; INSERT INTO [shipment].[ShipmentMaster] (SAPOutboundNumber, TerminalCode, ShipmentNumber, SealNumber, VehicleNumber, AccountDateTime)&#xA; SELECT TOP 1&#xA;  [SAPOutboundNumber]&#xA;  ,[AddFld.LIDNO]&#xA;  ,[ShipmentNumber]&#xA;  ,[SealNumber]&#xA;  ,[FrontPlate]&#xA;  ,[DateTime]&#xA; FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA; WHERE TransactionType in ('H', 'V')&#xA; &#xA; SET @ShipmentId = (SELECT MAX(ID) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FROM [shipment].[ShipmentMaster]&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE ShipmentNumber = (SELECT TOP 1 ShipmentNumber FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] ))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA; INSERT INTO [shipment].[ShipmentDetailSAP] (ShipmentId, Carrier, BackPlate, CompartmentNumber, CompartmentNumber_relative, Quantity, VBELN, MATNR, POSNR, CustomerID)&#xA; SELECT&#xA;&#x9; @ShipmentId&#xA;&#x9;,[Carrier]&#xA;&#x9;,[BackPlate]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[CompartmentNumber]&#xA;&#x9;,[Quantity]&#xA;&#x9;,[VBELN]&#xA;&#x9;,[MATNR]&#xA;&#x9;,[POSNR]&#xA;&#x9;,[CustomerID]&#xA; FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA; WHERE TransactionType in ('H', 'V')&#xA;&#xA; INSERT INTO [shipment].[ShipmentDriverSAP](ShipmentId,Driver_id)&#xA; SELECT  @ShipmentId&#xA;&#x9;&#x9;,[Column 15] as DriverID &#xA; FROM [dbo].[raTMS_LogShipment_Bulk]&#xA; Where [column 1] like 'E2OILSF'&#xA;       AND exists(SELECT * &#xA;&#x9;&#x9;&#x9;&#x9;  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] &#xA;&#x9;&#x9;&#x9;&#x9;  WHERE TransactionType in ('H', 'V')&#xA;&#x9;&#x9;&#x9;&#x9;  )&#x9; &#xA; SELECT 1 as 'ResultCode'&#xA;END     "
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="ResultCode"
@@ -307,7 +307,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{58C7D177-6CE1-4156-96CC-6F8A707B978A}"
-              SQLTask:SqlStatementSource="UPDATE [shipment].[OutboundSAP]&#xA; SET FileState =    (SELECT TOP 1 [Column 16] FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001'),&#xA;     ShipmentNumber=(SELECT TOP 1 [Column 3]  FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001')&#xA;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="UPDATE [shipment].[OutboundSAP]&#xA; SET FileState =    (SELECT TOP 1 [Column 16] FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001'),&#xA;     ShipmentNumber=(SELECT TOP 1 [Column 3]  FROM [dbo].[raTMS_LogShipment_Bulk] Where [column 1] like 'E2OILSH001')&#xA;WHERE ID= (SELECT MAX(ID) FROM [shipment].[OutboundSAP] WHERE FileName=?)&#xA;&#xA;&#xA;UPDATE [shipment].[ShipmentMaster]&#xA; SET Active=0&#xA;    ,UpdatedDate=GETDATE()&#xA;&#x9;,UpdatedBy=1&#xA;WHERE (ShipmentNumber = (SELECT TOP 1 ShipmentNumber  FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2]))&#xA; AND exists(SELECT * FROM [dbo].[raTMS_LogShipment_Bulk_Stage_2] WHERE TransactionType in ('L', 'V'))&#xA; AND Active=1&#xA; AND (status= (SELECT StatusCode FROM [dbo].[raTMS_ConfigStatus] where StatusDescriptions='Registered'));&#xA;&#xA;  &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="$Package::OutboundFileName"
@@ -860,14 +860,14 @@
           DTS:From="Package\sc Data processing container\Transaction type stage"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
-          DTS:To="Package\sc Data processing container\Shipment status (H,L,V) processing" />
+          DTS:To="Package\sc Data processing container\Stage 2" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\sc Data processing container.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
           DTS:DTSID="{BE44684D-E006-42A3-B1AA-F341524255F5}"
           DTS:EvalOp="3"
           DTS:Expression="@[User::Stage2ResultCode]==1"
-          DTS:From="Package\sc Data processing container\Shipment status (H,L,V) processing"
+          DTS:From="Package\sc Data processing container\Stage 2"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\sc Data processing container\Update relative compartment" />
@@ -1011,14 +1011,6 @@
           Id="Package\sc Data processing container\Bulk Data"
           TopLeft="98,196" />
         <NodeLayout
-          Size="187,42"
-          Id="Package\sc Data processing container\est Delete staged data"
-          TopLeft="93,60" />
-        <NodeLayout
-          Size="198,42"
-          Id="Package\sc Data processing container\est mapping staged data"
-          TopLeft="78,272" />
-        <NodeLayout
           Size="220,42"
           Id="Package\sc Data processing container\est Set importing successfully"
           TopLeft="55,656" />
@@ -1027,8 +1019,16 @@
           Id="Package\sc Data processing container\est Update master data"
           TopLeft="71,577" />
         <NodeLayout
+          Size="187,42"
+          Id="Package\sc Data processing container\est Delete staged data"
+          TopLeft="93,60" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\sc Data processing container\est mapping staged data"
+          TopLeft="78,272" />
+        <NodeLayout
           Size="180,42"
-          Id="Package\sc Data processing container\Shipment status (H,L,V) processing"
+          Id="Package\sc Data processing container\Stage 2"
           TopLeft="84,421" />
         <NodeLayout
           Size="188,42"
