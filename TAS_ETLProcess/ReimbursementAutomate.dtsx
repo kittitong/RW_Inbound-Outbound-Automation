@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ReimbursementAutomate"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{F4B3837D-A292-4B5F-93C4-7F32B5A036D7}">
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{CE34D7B7-F15E-4F38-8434-3B2EF6C579FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="874"
-          DTS:ConnectionString="D:\SAP_Process\Inboundor_Archive\2019-01-13-S2206299361.txt">
+          DTS:ConnectionString="D:\SAP_Process\Inboundor_Archive\2019-01-24-S2206299361.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -79,7 +79,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundArchiveFile">
       <DTS:VariableValue
-        DTS:DataType="8">D:\SAP_Process\Inboundor_Archive\2019-01-13-S2206299361.txt</DTS:VariableValue>
+        DTS:DataType="8">D:\SAP_Process\Inboundor_Archive\2019-01-24-S2206299361.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -90,7 +90,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InboundFile">
       <DTS:VariableValue
-        DTS:DataType="8">D:\SAP_Process\Inboundor\2019-01-13-S2206299361.txt</DTS:VariableValue>
+        DTS:DataType="8">D:\SAP_Process\Inboundor\2019-01-24-S2206299361.txt</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -321,7 +321,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{09F98E77-B86B-458C-A0A6-C8DA986C643D}"
-          SQLTask:SqlStatementSource="update raTMS_LogTruckShipmentSAP&#xA;set IDocRegistrationDate=GETDATE(),&#xA;      IDocStatus='Created'&#xA;where ShipmentNumber=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="update [shipment].[ShipmentMaster]&#xA;set IDocCreatedDate=GETDATE(),&#xA;      IDocCreated=1&#xA;where ID=(&#xA;&#x9;&#x9;SELECT TOP 1 ID&#xA;&#x9;&#x9;FROM [shipment].[ShipmentMaster] &#xA;&#x9;&#x9;WHERE ACTIVE=1 AND ShipmentNumber=?&#xA;&#x9;&#x9;ORDER BY ID DESC&#xA;&#x9; )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="$Package::ShipmentNumber"
